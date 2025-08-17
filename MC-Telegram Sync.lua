@@ -1,13 +1,27 @@
--- Импорт компонентов
+-- [[
+--  __  __  ____    _____ _____ _     _____ ____ ____      _    __  __ 
+--  |  \/  |/ ___|  |_   _| ____| |   | ____/ ___|  _ \    / \  |  \/  |
+--  | |\/| | |   _____| | |  _| | |   |  _|| |  _| |_) |  / _ \ | |\/| |
+--  | |  | | |__|_____| | | |___| |___| |__| |_| |  _ <  / ___ \| |  | |
+--  |_|__|_|\____|    |_| |_____|_____|_____\____|_| \_\/_/   \_\_|  |_|
+--   / ___| |__   __ _| |_  __   __/ _ \ / |                            
+--  | |   | '_ \ / _` | __| \ \ / / | | || |                            
+--  | |___| | | | (_| | |_   \ V /| |_| || |                            
+--   \____|_| |_|\__,_|\__|   \_/  \___(_)_|                            
+-- ]]
+
+-- Объявление компонентов 
 local component = require("component")
 local event = require("event")
 local internet = require("internet")
 local os = require("os")
-local json = require("json")  -- Requires the installed json.lua library
+local json = require("json")  -- Требуется установить библиотеку для работы с json
+-- https://raw.githubusercontent.com/rxi/json.lua/refs/heads/master/json.lua
 local chat_box = component.chat_box
 
 -- Конфигурационные переменные
 local token = "TokenID" -- Заменить своим токеном бота Telegram
+-- Для нормальной работы боту нужны права на отправку сообщений в группы 
 local chat_id = "-1001993395217" -- Указать ID чата с которым будет происходить синхронизация
 local bot_username = "GTchat" -- Имя бота в Telegram чтобы исключить его из списка синхронизации.
 chat_box.setName("MC-Telegram Sync") -- Имя от которого будут отправляться сообщения в чат Minecraft

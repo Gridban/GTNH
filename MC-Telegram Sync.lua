@@ -1,22 +1,20 @@
-
+-- Импорт компонентов
 local component = require("component")
 local event = require("event")
 local internet = require("internet")
 local os = require("os")
 local json = require("json")  -- Requires the installed json.lua library
-
--- Configuration
-local token = "tokenID"  -- Replace with your Telegram bot token
-local chat_id = "-1001993395217"  -- Replace with your Telegram chat ID (string or number)
-local bot_username = "GTchat"  -- Optional: Replace to filter bot's own messages
-local base_url = "https://api.telegram.org/bot" .. token .. "/"
 local chat_box = component.chat_box
 
--- Set Chat Box properties (optional)
-chat_box.setName("MC-Telegram Sync")
-chat_box.setDistance(64)  -- Adjust range as needed
+-- Конфигурационные переменные
+local token = "TokenID" -- Заменить своим токеном бота Telegram
+local chat_id = "-1001993395217" -- Указать ID чата с которым будет происходить синхронизация
+local bot_username = "GTchat" -- Имя бота в Telegram чтобы исключить его из списка синхронизации.
+chat_box.setName("MC-Telegram Sync") -- Имя от которого будут отправляться сообщения в чат Minecraft
+chat_box.setDistance(64) -- Радиус действия чатбокса (В стандартной конфигурации мода используется[range: 4 ~ 32767, default: 40])
+local base_url = "https://api.telegram.org/bot" .. token .. "/"
 
--- Function to urlencode strings
+-- Function to urlencode strings (не понимаю что делает эта хуета)
 local function urlencode(str)
     if (str) then
         str = str:gsub("\n", "\r\n")
@@ -28,7 +26,7 @@ local function urlencode(str)
     return str
 end
 
--- Function to send message to Telegram
+-- Функция отправки сообщений в Telegram
 local function sendToTelegram(text)
     local url = base_url .. "sendMessage?chat_id=" .. chat_id .. "&text=" .. urlencode(text)
     local handle = internet.request(url)
@@ -52,9 +50,9 @@ local function getTelegramUpdates(offset, timeout)
     end
 end
 
--- Main loop
+-- Основной цикл
 local last_offset = 0
-print("Synchronization started. Press Ctrl+C to stop.")
+print("Программа запущенна, cообщения синхронизируются. Нажимите Ctrl+Alt+C для остановки.")
 while true do
     -- Pull events with timeout (handles MC chat messages)
     local e = {event.pull(1)}

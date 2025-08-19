@@ -1,5 +1,5 @@
 -- [[
---  __  __  ____    _____ _____ _     _____ ____ ____      _    __  __ 
+--   __  __  ____    _____ _____ _     _____ ____ ____      _    __  __ 
 --  |  \/  |/ ___|  |_   _| ____| |   | ____/ ___|  _ \    / \  |  \/  |
 --  | |\/| | |   _____| | |  _| | |   |  _|| |  _| |_) |  / _ \ | |\/| |
 --  | |  | | |__|_____| | | |___| |___| |__| |_| |  _ <  / ___ \| |  | |
@@ -54,7 +54,7 @@ local function getTelegramUpdates(offset, timeout)
     local result = ""
     for chunk in handle do
         result = result .. chunk
-    end
+    End
     local data = json.decode(result)
     if data.ok then
         return data.result

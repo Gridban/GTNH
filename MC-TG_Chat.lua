@@ -9,7 +9,7 @@
 --  | |___| | | | (_| | |_   \ V /| |_| || |                            
 --   \____|_| |_|\__,_|\__|   \_/  \___(_)_|                            
 -- ]]
-
+t
 -- Объявление компонентов 
 local component = require("component")
 local event = require("event")
